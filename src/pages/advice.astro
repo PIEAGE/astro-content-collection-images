@@ -1,0 +1,29 @@
+---
+import MainLayout from "../layouts/MainLayout.astro";
+
+import { Image } from "astro:assets";
+import { getCollection } from "astro:content";
+
+const advice = await getCollection("advice");
+console.log(advice);
+---
+
+{
+  advice.map((blogPost) => (
+    <article class="relative isolate flex flex-col justify-end overflow-hidden rounded-2xl bg-gray-900 px-8 pb-8 pt-80 sm:pt-48 lg:pt-80">
+      <Image
+        src={blogPost.data.blogImage}
+        alt="something"
+        width="500"
+        height="500"
+      />
+
+      <h3 class="mt-3 text-lg font-semibold leading-6 text-white">
+        <a href={blogPost.data.href}>
+          <span class="absolute inset-0" />
+          {blogPost.data.title}
+        </a>
+      </h3>
+    </article>
+  ))
+}

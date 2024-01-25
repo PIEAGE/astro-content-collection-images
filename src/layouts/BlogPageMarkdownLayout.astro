@@ -1,0 +1,12 @@
+---
+import { Image } from "astro:assets";
+const { frontmatter } = Astro.props;
+---
+
+<Image
+  src={frontmatter.blogImage}
+  alt="something"
+  height="500"
+  width="500"
+  class="w-full"
+/>
